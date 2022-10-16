@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using MVC_ProductStore.Data;
 using MVC_ProductStore.Models.Repositories;
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Add CookieTempDataProvider
+builder.Services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
 
 // Fortelle hvilken implementasjon av IproductRepository som skal instansieres
 // og benyttes ved opprettelse av ProductController.
